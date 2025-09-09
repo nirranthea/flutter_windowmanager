@@ -2,33 +2,49 @@ group 'io.adaptant.labs.flutter_windowmanager'
 version '1.0'
 
 buildscript {
+    ext.kotlin_version = '1.7.21'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:7.1.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 33
 
+    namespace 'io.flutter.plugins.flutterwindowmanager'
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
     }
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
 }
