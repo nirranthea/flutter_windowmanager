@@ -28,10 +28,10 @@ public class FlutterWindowManagerPlugin implements MethodCallHandler, FlutterPlu
   }
 
   /** Plugin registration. */
-  @Deprecated
-  public static void registerWith(Registrar registrar) {
-    new FlutterWindowManagerPlugin(registrar.activity()).registerWith(registrar.messenger());
-  }
+//  @Deprecated
+//  public static void registerWith(Registrar registrar) {
+//    new FlutterWindowManagerPlugin(registrar.activity()).registerWith(registrar.messenger());
+//  }
 
   private void registerWith(BinaryMessenger binaryMessenger) {
     final MethodChannel channel = new MethodChannel(binaryMessenger, "flutter_windowmanager");
